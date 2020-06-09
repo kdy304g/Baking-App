@@ -19,30 +19,31 @@ public class RecipeAppWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        super.onReceive(context, intent);
-        Log.d("onReceive", "onReceive()" + intent.getAction());
         if(intent.getSerializableExtra("ingredients") != null){
             ingredients = (List<Ingredient>) intent.getSerializableExtra("ingredients");
-            Log.d("ingredient",ingredients.get(0).getIngredient());
             AppWidgetManager mgr = AppWidgetManager.getInstance(context);
             ComponentName cn = new ComponentName(context, RecipeAppWidgetProvider.class);
             mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn),R.id.widget_list_view);
         }
+        super.onReceive(context, intent);
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        Log.d("onUpdate","called with");
+        if(ingredients != null){
+            Log.d("onUpdate","called with"+ingredients.get(0).getIngredient());
+        }
         for (int appWidgetId : appWidgetIds) {
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipe_app_widget);
             Intent intent = new Intent(context, RecipeWidgetRemoteViewsService.class);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetId);
-            intent.putExtra("ingredients", (Serializable) ingredients);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipe_app_widget);
+            intent.putExtra("ingredients", (Serializable) ingredients);
             views.setRemoteAdapter(R.id.widget_list_view, intent);
             appWidgetManager.updateAppWidget(appWidgetId, views);
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.widget_list_view);
         }
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 
 }
