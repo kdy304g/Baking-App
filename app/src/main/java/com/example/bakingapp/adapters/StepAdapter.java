@@ -30,7 +30,6 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
     final int THUMBNAIL_SIZE = 64;
     private Context context;
     private Bitmap icon;
-    String imageUri;
 
     public StepAdapter(Context context, List<Step> steps, StepClickListener stepClickListener){
         this.mInflater = LayoutInflater.from(context);
@@ -108,6 +107,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
     public interface StepClickListener {
         void onStepItemClick(Step step);
     }
-
-
 }
+
+
+

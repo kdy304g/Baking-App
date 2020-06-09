@@ -45,6 +45,7 @@ public class StepFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         stepList = (List<Step>) getArguments().getSerializable("steps");
         ingredientList = (List<Ingredient>) getArguments().getSerializable("ingredients");
         mTwoPane = (boolean) getArguments().getSerializable("mTwoPane");

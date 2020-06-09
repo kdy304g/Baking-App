@@ -44,15 +44,15 @@ public class BitMapTask extends AsyncTask<Void, Void, Bitmap> {
     public static Bitmap retrieveVideoFrameFromVideo(String videoPath)throws Throwable
     {
         Bitmap bitmap = null;
-        MediaMetadataRetriever mediaMetadataRetriever = null;
+        MediaMetadataRetriever mmr = null;
         try
         {
-            mediaMetadataRetriever = new MediaMetadataRetriever();
+            mmr = new MediaMetadataRetriever();
             if (Build.VERSION.SDK_INT >= 14)
-                mediaMetadataRetriever.setDataSource(videoPath, new HashMap<String, String>());
+                mmr.setDataSource(videoPath, new HashMap<String, String>());
             else
-                mediaMetadataRetriever.setDataSource(videoPath);
-            bitmap = mediaMetadataRetriever.getFrameAtTime(1000, MediaMetadataRetriever.OPTION_CLOSEST);
+                mmr.setDataSource(videoPath);
+            bitmap = mmr.getFrameAtTime(1000, MediaMetadataRetriever.OPTION_CLOSEST);
         }
         catch (Exception e)
         {
@@ -61,9 +61,9 @@ public class BitMapTask extends AsyncTask<Void, Void, Bitmap> {
         }
         finally
         {
-            if (mediaMetadataRetriever != null)
+            if (mmr != null)
             {
-                mediaMetadataRetriever.release();
+                mmr.release();
             }
         }
         return bitmap;

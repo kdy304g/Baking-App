@@ -70,10 +70,12 @@ public class RecipeFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         Gson gson = new Gson();
+
                         Type listType = new TypeToken<List<Recipe>>(){}.getType();
                         List<Recipe> recipeList = gson.fromJson(response.toString(), listType);
                         myRecipeList.addAll(recipeList);
                         mRecipeAdapter.notifyDataSetChanged();
+
                     }
                 },
                 new Response.ErrorListener() {

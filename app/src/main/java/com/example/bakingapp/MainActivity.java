@@ -1,7 +1,11 @@
 package com.example.bakingapp;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,5 +28,19 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
         intent.putExtra("steps", (Serializable) recipe.getSteps());
         intent.putExtra("ingredients", (Serializable) recipe.getIngredients());
         MainActivity.this.startActivity(intent);
+        updateWidget(this, recipe);
+    }
+
+    public static void updateWidget(Context context, Recipe recipe){
+        Intent intent = new Intent(context, RecipeAppWidgetProvider.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        intent.putExtra("ingredients", (Serializable) recipe.getIngredients());
+        int[] ids = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, RecipeAppWidgetProvider.class));
+
+        Log.d("ids", String.valueOf(ids.length));
+
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        context.sendBroadcast(intent);
+
     }
 }
