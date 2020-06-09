@@ -30,15 +30,16 @@ public class RecipeAppWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        if(ingredients != null){
-            Log.d("onUpdate","called with"+ingredients.get(0).getIngredient());
-        }
         for (int appWidgetId : appWidgetIds) {
+            if(ingredients != null){
+                Log.d("onUpdate", String.valueOf(ingredients.size()) + " ingredients");
+            }
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipe_app_widget);
             Intent intent = new Intent(context, RecipeWidgetRemoteViewsService.class);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetId);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
             intent.putExtra("ingredients", (Serializable) ingredients);
+
             views.setRemoteAdapter(R.id.widget_list_view, intent);
             appWidgetManager.updateAppWidget(appWidgetId, views);
             appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.widget_list_view);

@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/widget_textview"
-        android:background="@android:color/darker_gray"
-        android:contentDescription="appwidget text"
-        android:gravity="center"
-        android:text="ingredients"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"/>
-    <ListView
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/widget_textview"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="appwidget text"
+            android:gravity="center"
+            android:text="ingredients"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"/>
+    </FrameLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/widget_list_view"/>
+        android:layout_height="wrap_content">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="1dp"
+            android:divider="#eeeeee"
+            tools:listitem="@layout/widget_list_item"
+            android:id="@+id/widget_list_view"/>
+    </LinearLayout>
 </LinearLayout>

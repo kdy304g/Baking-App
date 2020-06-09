@@ -10,23 +10,19 @@ import android.widget.RemoteViewsService;
 import com.example.bakingapp.model.Ingredient;
 import com.example.bakingapp.model.Recipe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeWidgetRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     private Context mContext;
     private Recipe recipe;
-    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private List<Ingredient> ingredients;
     private int appWidgetId;
 
     public RecipeWidgetRemoteViewsFactory(Context applicationContext, Intent intent){
         mContext = applicationContext;
         ingredients = (List<Ingredient>) intent.getSerializableExtra("ingredients");
         appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, AppWidgetManager.INVALID_APPWIDGET_ID);
-        Log.d("AppWidgetId",String.valueOf(appWidgetId));
-
-        Log.d("remoteViewsFactory","constructor "+ingredients);
         if(ingredients!=null){
             Log.d("RemoteViewsFactory","constructor called"+ingredients.get(0).getIngredient());
         }
@@ -34,7 +30,6 @@ public class RecipeWidgetRemoteViewsFactory implements RemoteViewsService.Remote
 
     @Override
     public void onCreate() {
-        Log.d("remoteViewsFactory","onCreate");
         if(ingredients != null){
             Log.d("onCreate of factory",ingredients.get(0).getIngredient());
         }
@@ -52,16 +47,13 @@ public class RecipeWidgetRemoteViewsFactory implements RemoteViewsService.Remote
 
     @Override
     public int getCount() {
-        if (ingredients==null){
-            return 0;
-        }
-        return ingredients.size();
+        return ingredients == null ? 0 : ingredients.size();
     }
 
     @Override
     public RemoteViews getViewAt(int position) {
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_list_item);
-        rv.setTextViewText(R.id.widget_item, ingredients.get(position).getIngredient());
+        rv.setTextViewText(R.id.widget_item_textview, ingredients.get(position).getIngredient());
         return rv;
     }
 
