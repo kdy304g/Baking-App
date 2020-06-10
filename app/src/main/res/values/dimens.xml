@@ -17,5 +17,4 @@
     <dimen name="step_list_padding">10dp</dimen>
     <dimen name="recipe_ingredients_font">20sp</dimen>
     <dimen name="step_description_padding">10dp</dimen>
-    <dimen name="step_description_font">20sp</dimen>
 </resources>
