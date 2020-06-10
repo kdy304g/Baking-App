@@ -16,15 +16,11 @@ import java.util.List;
 
 public class RecipeAppWidgetProvider extends AppWidgetProvider {
     private List<Ingredient> ingredients;
+    private String recipeName;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if(intent.getSerializableExtra("ingredients") != null){
-            ingredients = (List<Ingredient>) intent.getSerializableExtra("ingredients");
-            AppWidgetManager mgr = AppWidgetManager.getInstance(context);
-            ComponentName cn = new ComponentName(context, RecipeAppWidgetProvider.class);
-            mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn),R.id.widget_list_view);
-        }
+        recipeName = intent.getStringExtra("recipeName");
         super.onReceive(context, intent);
     }
 
@@ -32,11 +28,10 @@ public class RecipeAppWidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipe_app_widget);
+            views.setTextViewText(R.id.widget_textview,recipeName);
             Intent intent = new Intent(context, RecipeWidgetRemoteViewsService.class);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetId);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-            intent.putExtra("ingredients", (Serializable) ingredients);
-
             views.setRemoteAdapter(R.id.widget_list_view, intent);
             appWidgetManager.updateAppWidget(appWidgetId, views);
             appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.widget_list_view);

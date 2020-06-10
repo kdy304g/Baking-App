@@ -11,11 +11,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/widget_textview"
-            android:background="@android:color/darker_gray"
+            android:background="@android:color/white"
             android:contentDescription="appwidget text"
             android:gravity="center"
-            android:text="ingredients"
-            android:textColor="@android:color/holo_blue_light"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
             android:textStyle="bold|italic"/>
     </FrameLayout>
