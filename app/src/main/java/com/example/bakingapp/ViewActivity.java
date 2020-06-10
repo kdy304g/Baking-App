@@ -26,14 +26,14 @@ public class ViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
         Intent i = getIntent();
-        step = (Step) i.getSerializableExtra("step");
-        steps = (List<Step>) i.getSerializableExtra("steps");
-        mTwoPane = (boolean) i.getSerializableExtra("mTwoPane");
+        step = (Step) i.getSerializableExtra(getString(R.string.step_key));
+        steps = (List<Step>) i.getSerializableExtra(getString(R.string.steps_key));
+        mTwoPane = (boolean) i.getSerializableExtra(getString(R.string.mTwoPane));
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("step", (Serializable) step);
-        bundle.putSerializable("steps", (Serializable) steps);
-        bundle.putBoolean("mTwoPane", mTwoPane);
+        bundle.putSerializable(getString(R.string.step_key), (Serializable) step);
+        bundle.putSerializable(getString(R.string.steps_key), (Serializable) steps);
+        bundle.putBoolean(getString(R.string.mTwoPane), mTwoPane);
         ViewFragment viewFragment = new ViewFragment();
         viewFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.view_step_fragment, viewFragment).commit();
@@ -52,8 +52,8 @@ public class ViewActivity extends AppCompatActivity {
     public void onPreviousClick(View view){
         step = steps.get(step.getId()-1);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("step", (Serializable) step);
-        bundle.putSerializable("steps", (Serializable) steps);
+        bundle.putSerializable(getString(R.string.step_key), (Serializable) step);
+        bundle.putSerializable(getString(R.string.steps_key), (Serializable) steps);
         ViewFragment viewFragment = new ViewFragment();
         viewFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.view_step_fragment, viewFragment).commit();
@@ -62,8 +62,8 @@ public class ViewActivity extends AppCompatActivity {
     public void onNextClick(View view){
         step = steps.get(step.getId() + 1);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("step", (Serializable) step);
-        bundle.putSerializable("steps", (Serializable) steps);
+        bundle.putSerializable(getString(R.string.step_key), (Serializable) step);
+        bundle.putSerializable(getString(R.string.steps_key), (Serializable) steps);
         ViewFragment viewFragment = new ViewFragment();
         viewFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.view_step_fragment, viewFragment).commit();
