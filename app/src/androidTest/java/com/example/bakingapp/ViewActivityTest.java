@@ -30,6 +30,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 public class ViewActivityTest {
     private Step step;
     private List<Step> stepList;
+    private String STEP_TEXT = "step";
+    private String STEPS_TEXT = "steps";
+    private String TWO_PANE = "mTwoPane";
+
 
     @Rule
     public IntentsTestRule<ViewActivity> intentsTestRule =
@@ -41,9 +45,9 @@ public class ViewActivityTest {
         stepList = new ArrayList<>();
         stepList.add(step.mockStep());
         Intent i = new Intent();
-        i.putExtra("steps", (Serializable) stepList);
-        i.putExtra("step", step.mockStep());
-        i.putExtra("mTwoPane",false);
+        i.putExtra(STEPS_TEXT, (Serializable) stepList);
+        i.putExtra(STEP_TEXT, step.mockStep());
+        i.putExtra(TWO_PANE,false);
         intentsTestRule.launchActivity(i);
     }
 

@@ -34,6 +34,8 @@ import static org.hamcrest.core.IsNot.not;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
+    private String RECIPE = "Nutella Pie";
+    private String STEP_DESCRIPTION = "Prep the cookie crust.";
 
     @Rule
     public IntentsTestRule<MainActivity> intentsTestRule =
@@ -57,7 +59,7 @@ public class MainActivityTest {
     public void testLaunchMainActivity(){
         onView(withRecyclerView(R.id.rvRecipes)
                 .atPositionOnView(0, R.id.recipe_name))
-                .check(matches(withText("Nutella Pie")));
+                .check(matches(withText(RECIPE)));
     }
 
     @Test
@@ -68,7 +70,7 @@ public class MainActivityTest {
 
         onView(withRecyclerView(R.id.rvSteps)
                 .atPositionOnView(2, R.id.step_description))
-                .check(matches(withText("Prep the cookie crust.")));
+                .check(matches(withText(STEP_DESCRIPTION)));
     }
 
     @After

@@ -30,6 +30,9 @@ import static com.example.bakingapp.utils.TestUtils.withRecyclerView;
 public class StepActivityTest {
     private Step step;
     private List<Step> stepList;
+    private String STEPS_TEXT = "steps";
+    private String SHORT_DESCRIPTION = "dummy short description";
+    private String DESCRIPTION = "dummy description";
 
     @Rule
     public IntentsTestRule<StepActivity> intentsTestRule =
@@ -41,7 +44,7 @@ public class StepActivityTest {
         stepList = new ArrayList<>();
         stepList.add(step.mockStep());
         Intent i = new Intent();
-        i.putExtra("steps", (Serializable) stepList);
+        i.putExtra(STEPS_TEXT, (Serializable) stepList);
         intentsTestRule.launchActivity(i);
     }
 
@@ -49,13 +52,13 @@ public class StepActivityTest {
     public void testLaunchStepActivity(){
         onView(withRecyclerView(R.id.rvSteps)
                 .atPositionOnView(0, R.id.step_description))
-                .check(matches(withText("dummy short description")));
+                .check(matches(withText(SHORT_DESCRIPTION)));
     }
 
     @Test
     public void clickStepTem_OpensViewActivity(){
         onView(withId(R.id.rvSteps)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         intended(hasComponent(ViewActivity.class.getName()));
-        onView(withId(R.id.view_step_description)).check(matches(withText("dummy description")));
+        onView(withId(R.id.view_step_description)).check(matches(withText(DESCRIPTION)));
     }
 }
