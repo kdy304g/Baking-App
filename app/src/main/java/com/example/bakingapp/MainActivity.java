@@ -36,11 +36,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         intent.putExtra("ingredients", (Serializable) recipe.getIngredients());
         int[] ids = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, RecipeAppWidgetProvider.class));
-
-        Log.d("ids", String.valueOf(ids.length));
-
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
         context.sendBroadcast(intent);
-
     }
 }

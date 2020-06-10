@@ -11,6 +11,10 @@ import java.util.List;
 public class RecipeWidgetRemoteViewsService extends RemoteViewsService {
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
+        List<Ingredient> ingredients = (List<Ingredient>) intent.getSerializableExtra("ingredients");
+        if (ingredients != null){
+            Log.d("ingredients",ingredients.get(0).getIngredient());
+        }
         return new RecipeWidgetRemoteViewsFactory(this.getApplicationContext(), intent);
     }
 }
