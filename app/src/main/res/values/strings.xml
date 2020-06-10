@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Baking App</string>
+    <string name="ingredients_key">ingredients</string>
+    <string name="url">https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json</string>
+    <string name="steps_key">steps</string>
+    <string name="mTwoPane">mTwoPane</string>
+    <string name="step_key">step</string>
+    <string name="data">data</string>
+    <string name="recipeName_key">recipeName</string>
+    <string name="previous">previous</string>
+    <string name="next">next</string>
 </resources>

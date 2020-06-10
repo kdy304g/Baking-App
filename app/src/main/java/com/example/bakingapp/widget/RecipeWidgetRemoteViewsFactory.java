@@ -1,4 +1,4 @@
-package com.example.bakingapp;
+package com.example.bakingapp.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
+import com.example.bakingapp.R;
 import com.example.bakingapp.model.Ingredient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

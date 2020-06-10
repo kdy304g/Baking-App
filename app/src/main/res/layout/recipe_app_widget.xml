@@ -15,7 +15,7 @@
             android:contentDescription="appwidget text"
             android:gravity="center"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="@dimen/widget_text_font"
             android:textStyle="bold|italic"/>
     </FrameLayout>
     <LinearLayout
@@ -24,7 +24,7 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:dividerHeight="1dp"
+            android:dividerHeight="@dimen/divider"
             android:divider="#eeeeee"
             tools:listitem="@layout/widget_list_item"
             android:id="@+id/widget_list_view"/>

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bakingapp.IngredientActivity;
+import com.example.bakingapp.R;
 import com.example.bakingapp.StepActivity;
 import com.example.bakingapp.adapters.StepAdapter;
 import com.example.bakingapp.databinding.StepListFragmentBinding;
@@ -46,17 +47,17 @@ public class StepFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        stepList = (List<Step>) getArguments().getSerializable("steps");
-        ingredientList = (List<Ingredient>) getArguments().getSerializable("ingredients");
-        mTwoPane = (boolean) getArguments().getSerializable("mTwoPane");
+        stepList = (List<Step>) getArguments().getSerializable(getString(R.string.steps_key));
+        ingredientList = (List<Ingredient>) getArguments().getSerializable(getString(R.string.ingredients_key));
+        mTwoPane = (boolean) getArguments().getSerializable(getString(R.string.mTwoPane));
         binding.recipeIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mTwoPane){
-                    ((StepActivity)getActivity()).onIngredientsclick();
+                    ((StepActivity)getActivity()).onIngredientsClick();
                 } else {
                     Intent intent = new Intent (getActivity(), IngredientActivity.class);
-                    intent.putExtra("ingredients",(Serializable) ingredientList);
+                    intent.putExtra(getString(R.string.ingredients_key),(Serializable) ingredientList);
                     getActivity().startActivity(intent);
                 }
             }

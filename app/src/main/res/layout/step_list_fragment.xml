@@ -16,13 +16,13 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:textSize="@dimen/recipe_ingredients_font"
                 android:id="@+id/recipe_ingredient"
                 android:text="Recipe Ingredients"
-                android:padding="10dp"/>
+                android:padding="@dimen/step_list_padding"/>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/divider"
                 android:background="@android:color/darker_gray" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSteps"

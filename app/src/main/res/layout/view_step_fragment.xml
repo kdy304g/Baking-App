@@ -13,9 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/view_step_description"
         android:textColor="@android:color/black"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:text="view fragment"/>
+        android:padding="@dimen/step_description_padding"
+        android:textSize="@dimen/step_description_font"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,14 +23,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="previous"
+            android:text="@string/previous"
             android:onClick="onPreviousClick"
             android:id="@+id/previous"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="onNextClick"
-            android:text="next"
+            android:text="@string/next"
             android:id="@+id/next"/>
     </LinearLayout>
 </LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_width">350dp</dimen>
+    <dimen name="divider">1dp</dimen>
+    <dimen name="ingredient_font">18sp</dimen>
+    <dimen name="measure_font">16sp</dimen>
+    <dimen name="measure_padding_left">10dp</dimen>
+    <dimen name="measure_margin_bottom">5dp</dimen>
+    <dimen name="widget_text_font">24sp</dimen>
+    <dimen name="recipe_item_elevation">5dp</dimen>
+    <dimen name="recipe_item_corner_radius">10dp</dimen>
+    <dimen name="recipe_item_padding">10dp</dimen>
+    <dimen name="recipe_item_font">20sp</dimen>
+    <dimen name="thumbnail_margin_left">10dp</dimen>
+    <dimen name="step_description_font">20sp</dimen>
+    <dimen name="step_text_padding">10dp</dimen>
+    <dimen name="step_list_padding">10dp</dimen>
+    <dimen name="recipe_ingredients_font">20sp</dimen>
+    <dimen name="step_description_padding">10dp</dimen>
+    <dimen name="step_description_font">20sp</dimen>
+</resources>

@@ -6,10 +6,10 @@
     android:orientation="horizontal">
     <FrameLayout
         android:id="@+id/step_list_fragment"
-        android:layout_width="350dp"
+        android:layout_width="@dimen/list_width"
         android:layout_height="match_parent"/>
     <View
-        android:layout_width="1dp"
+        android:layout_width="@dimen/divider"
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray" />
     <LinearLayout

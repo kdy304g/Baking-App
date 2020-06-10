@@ -1,17 +1,15 @@
-package com.example.bakingapp;
+package com.example.bakingapp.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.widget.RemoteViews;
 
+import com.example.bakingapp.R;
 import com.example.bakingapp.model.Ingredient;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class RecipeAppWidgetProvider extends AppWidgetProvider {
@@ -20,7 +18,7 @@ public class RecipeAppWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        recipeName = intent.getStringExtra("recipeName");
+        recipeName = intent.getStringExtra(context.getString(R.string.recipeName_key));
         super.onReceive(context, intent);
     }
 

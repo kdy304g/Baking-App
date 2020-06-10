@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.bakingapp.R;
 import com.example.bakingapp.databinding.ViewStepFragmentBinding;
 import com.example.bakingapp.model.Step;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -58,9 +59,9 @@ public class ViewFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        step = (Step) getArguments().getSerializable("step");
-        steps = (List<Step>) getArguments().getSerializable("steps");
-        mTwoPane = getArguments().getBoolean("mTwoPane");
+        step = (Step) getArguments().getSerializable(getString(R.string.step_key));
+        steps = (List<Step>) getArguments().getSerializable(getString(R.string.steps_key));
+        mTwoPane = getArguments().getBoolean(getString(R.string.mTwoPane));
         Button previous = binding.previous;
         Button next = binding.next;
         if(mTwoPane){
@@ -109,7 +110,7 @@ public class ViewFragment extends Fragment {
             mPlayerView.setPlayer(mExoPlayer);
 
             DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getActivity(),
-                    Util.getUserAgent(getActivity(), "bakingApp"));
+                    Util.getUserAgent(getActivity(), getString(R.string.app_name)));
             MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
                     .createMediaSource(Uri.parse(step.getVideoURL()));
             mExoPlayer.prepare(videoSource);

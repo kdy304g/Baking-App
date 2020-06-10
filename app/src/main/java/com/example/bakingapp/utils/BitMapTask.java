@@ -1,4 +1,4 @@
-package com.example.bakingapp;
+package com.example.bakingapp.utils;
 
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;

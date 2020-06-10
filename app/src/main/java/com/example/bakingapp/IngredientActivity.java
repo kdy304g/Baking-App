@@ -21,9 +21,9 @@ public class IngredientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient);
         Intent i = getIntent();
-        ingredients = (List<Ingredient>) i.getSerializableExtra("ingredients");
+        ingredients = (List<Ingredient>) i.getSerializableExtra(getString(R.string.ingredients_key));
         Bundle bundle = new Bundle();
-        bundle.putSerializable("ingredients", (Serializable) ingredients);
+        bundle.putSerializable(getString(R.string.ingredients_key), (Serializable) ingredients);
         IngredientFragment ingredientFragment = new IngredientFragment();
         ingredientFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.ingredient_list_fragment, ingredientFragment).commit();

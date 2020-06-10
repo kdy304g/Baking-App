@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bakingapp.BitMapTask;
+import com.example.bakingapp.utils.BitMapTask;
 import com.example.bakingapp.R;
 import com.example.bakingapp.databinding.StepItemBinding;
 import com.example.bakingapp.model.Step;

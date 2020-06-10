@@ -37,7 +37,7 @@ public class StepActivity extends AppCompatActivity implements StepAdapter.StepC
             mTwoPane = true;
             if (savedInstanceState == null){
                 Bundle bundleIngredient = new Bundle();
-                bundleIngredient.putSerializable("ingredients", (Serializable) ingredients);
+                bundleIngredient.putSerializable(getString(R.string.ingredients_key), (Serializable) ingredients);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 IngredientFragment ingredientFragment = new IngredientFragment();
                 ingredientFragment.setArguments(bundleIngredient);
@@ -47,9 +47,9 @@ public class StepActivity extends AppCompatActivity implements StepAdapter.StepC
             }
         }
         Bundle bundle = new Bundle();
-        bundle.putSerializable("steps", (Serializable) steps);
-        bundle.putSerializable("ingredients", (Serializable) ingredients);
-        bundle.putSerializable("mTwoPane", mTwoPane);
+        bundle.putSerializable(getString(R.string.steps_key), (Serializable) steps);
+        bundle.putSerializable(getString(R.string.ingredients_key), (Serializable) ingredients);
+        bundle.putSerializable(getString(R.string.mTwoPane), mTwoPane);
         StepFragment stepFragment = new StepFragment();
         stepFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.step_list_fragment, stepFragment).commit();
@@ -59,9 +59,9 @@ public class StepActivity extends AppCompatActivity implements StepAdapter.StepC
     public void onStepItemClick(Step step) {
         if(mTwoPane){
             Bundle bundleStep = new Bundle();
-            bundleStep.putSerializable("steps", (Serializable) steps);
-            bundleStep.putSerializable("step", (Serializable) step);
-            bundleStep.putSerializable("mTwoPane", mTwoPane);
+            bundleStep.putSerializable(getString(R.string.steps_key), (Serializable) steps);
+            bundleStep.putSerializable(getString(R.string.step_key), (Serializable) step);
+            bundleStep.putSerializable(getString(R.string.mTwoPane), mTwoPane);
             FragmentManager fragmentManager = getSupportFragmentManager();
             ViewFragment viewFragment = new ViewFragment();
             viewFragment.setArguments(bundleStep);
@@ -70,16 +70,16 @@ public class StepActivity extends AppCompatActivity implements StepAdapter.StepC
                     .commit();
         } else{
             final Intent intent = new Intent (StepActivity.this, ViewActivity.class);
-            intent.putExtra("step", step);
-            intent.putExtra("steps", (Serializable) steps);
-            intent.putExtra("mTwoPane", (Serializable) mTwoPane);
+            intent.putExtra(getString(R.string.step_key), step);
+            intent.putExtra(getString(R.string.steps_key), (Serializable) steps);
+            intent.putExtra(getString(R.string.mTwoPane), (Serializable) mTwoPane);
             StepActivity.this.startActivity(intent);
         }
     }
 
-    public void onIngredientsclick() {
+    public void onIngredientsClick() {
         Bundle bundleIngredient = new Bundle();
-        bundleIngredient.putSerializable("ingredients", (Serializable) ingredients);
+        bundleIngredient.putSerializable(getString(R.string.ingredients_key), (Serializable) ingredients);
         FragmentManager fragmentManager = getSupportFragmentManager();
         IngredientFragment ingredientFragment = new IngredientFragment();
         ingredientFragment.setArguments(bundleIngredient);

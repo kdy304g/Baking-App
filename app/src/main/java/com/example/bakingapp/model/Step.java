@@ -61,4 +61,14 @@ public class Step implements Serializable {
     public void setThumbnailURL(String thumbnailURL) {
         this.thumbnailURL = thumbnailURL;
     }
+
+    public Step mockStep(){
+        Step step = new Step();
+        step.setDescription("dummy description");
+        step.setId(1000);
+        step.setShortDescription("dummy short description");
+        step.setThumbnailURL("https://d17h27t6h515a5.cloudfront.net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4");
+        step.setVideoURL("https://d17h27t6h515a5.cloudfront.net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4");
+        return step;
+    }
 }

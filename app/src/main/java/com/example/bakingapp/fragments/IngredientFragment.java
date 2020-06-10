@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bakingapp.R;
 import com.example.bakingapp.adapters.IngredientAdapter;
 import com.example.bakingapp.databinding.IngredientListFragmentBinding;
 import com.example.bakingapp.model.Ingredient;
@@ -36,7 +37,7 @@ public class IngredientFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ingredientList = (List<Ingredient>) getArguments().getSerializable("ingredients");
+        ingredientList = (List<Ingredient>) getArguments().getSerializable(getString(R.string.ingredients_key));
         RecyclerView recyclerView = binding.rvIngredients;
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
