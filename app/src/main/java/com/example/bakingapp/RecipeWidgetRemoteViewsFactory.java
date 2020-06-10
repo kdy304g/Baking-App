@@ -23,16 +23,10 @@ public class RecipeWidgetRemoteViewsFactory implements RemoteViewsService.Remote
         mContext = applicationContext;
         ingredients = (List<Ingredient>) intent.getSerializableExtra("ingredients");
         appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, AppWidgetManager.INVALID_APPWIDGET_ID);
-        if(ingredients!=null){
-            Log.d("RemoteViewsFactory","constructor called"+ingredients.get(0).getIngredient());
-        }
     }
 
     @Override
     public void onCreate() {
-        if(ingredients != null){
-            Log.d("onCreate of factory",ingredients.get(0).getIngredient());
-        }
     }
 
     @Override
@@ -42,7 +36,6 @@ public class RecipeWidgetRemoteViewsFactory implements RemoteViewsService.Remote
 
     @Override
     public void onDestroy() {
-
     }
 
     @Override
